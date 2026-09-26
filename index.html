@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Llatí 4t ESO — Institut La Mitjana</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    box-sizing: border-box;
+    --bg: #E6DEC9; --bg-panel: #F4EEDF; --bg-panel-2: #EDE4CE;
+    --ink: #2B2118; --ink-soft: #5A4B3B;
+    --red: #8C2F27; --red-dark: #6E211B;
+    --bronze: #A9781F; --patina: #4E6E58;
+    --line: rgba(43,33,24,0.22); --line-soft: rgba(43,33,24,0.12); --shadow: rgba(43,33,24,0.28);
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1C1712; --bg-panel: #29221A; --bg-panel-2: #322A20;
+      --ink: #EFE7D6; --ink-soft: #C7B99E;
+      --red: #D06B5C; --red-dark: #B5493A; --bronze: #D8AC4E; --patina: #8CB49A;
+      --line: rgba(239,231,214,0.22); --line-soft: rgba(239,231,214,0.12); --shadow: rgba(0,0,0,0.55);
+    }
+  }
+  html, body { height: 100%; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg);
+    background-image: radial-gradient(circle at 15% 20%, rgba(43,33,24,0.05) 0%, transparent 45%),
+                       radial-gradient(circle at 85% 75%, rgba(43,33,24,0.05) 0%, transparent 45%);
+    color: var(--ink); font-family: 'Crimson Pro', Georgia, serif; font-size: 18px; line-height: 1.5;
+    min-height: 100%; display: flex; justify-content: center; padding: 40px 16px;
+  }
+  .display { font-family: 'Cinzel', Georgia, serif; letter-spacing: 0.04em; }
+  .wrap { width: 100%; max-width: 640px; text-align: center; }
+  h1 { font-size: clamp(28px, 7vw, 44px); margin: 0 0 6px; font-weight: 600; }
+  .rule { width: 120px; height: 3px; margin: 12px auto 14px; background: linear-gradient(90deg, transparent, var(--bronze), transparent); }
+  p.sub { color: var(--ink-soft); font-style: italic; margin: 0; }
+  p.meta { color: var(--ink-soft); font-size: 15px; margin: 6px 0 34px; }
+
+  .unit-list { display: flex; flex-direction: column; gap: 14px; text-align: left; }
+  a.unit-card {
+    display: block; text-decoration: none; color: var(--ink);
+    background: var(--bg-panel); border: 1px solid var(--line); border-radius: 12px;
+    padding: 20px 22px; box-shadow: 0 8px 18px -12px var(--shadow); transition: border-color .15s, transform .15s;
+  }
+  a.unit-card:hover { border-color: var(--bronze); transform: translateY(-2px); }
+  a.unit-card .num { font-family:'Cinzel', serif; font-size: 12px; color: var(--bronze); letter-spacing: 0.06em; text-transform: uppercase; }
+  a.unit-card h2 { font-family: 'Cinzel', serif; font-size: 19px; margin: 4px 0 8px; color: var(--red); }
+  a.unit-card p { margin: 0; color: var(--ink-soft); font-size: 15px; }
+
+  .unit-card.placeholder { opacity: 0.55; cursor: default; }
+  .unit-card.placeholder:hover { border-color: var(--line); transform: none; }
+
+  footer { margin-top: 34px; color: var(--ink-soft); font-size: 13px; font-style: italic; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1 class="display">LLATÍ 4t ESO</h1>
+  <div class="rule"></div>
+  <p class="sub">materials i jocs de pràctica</p>
+  <p class="meta">curs 2026-2027 · Institut La Mitjana</p>
+
+  <div class="unit-list">
+    <a class="unit-card" href="unitat1/index.html">
+      <div class="num">Unitat 1</div>
+      <h2>Primera declinació i present d'indicatiu</h2>
+      <p>Declinació, conjugació, vocabulari i etimologia (estrats, mots patrimonials i cultismes).</p>
+    </a>
+    <div class="unit-card placeholder">
+      <div class="num">Properament</div>
+      <h2>Unitat 2</h2>
+      <p>Encara no publicada.</p>
+    </div>
+  </div>
+
+  <footer>Gerard Méndez</footer>
+</div>
+</body>
+</html>
