@@ -52,8 +52,8 @@
     margin: 0;
     background: var(--bg);
     background-image:
-      radial-gradient(circle at 15% 20%, rgba(43,33,24,0.05) 0%, transparent 45%),
-      radial-gradient(circle at 85% 75%, rgba(43,33,24,0.05) 0%, transparent 45%);
+      radial-gradient(circle at 15% 20%, rgba(245,206,114,0.05) 0%, transparent 45%),
+      radial-gradient(circle at 85% 75%, rgba(245,206,114,0.05) 0%, transparent 45%);
     color: var(--ink);
     font-family: 'Crimson Pro', Georgia, 'Times New Roman', serif;
     font-size: 18px;
@@ -64,109 +64,31 @@
     padding: 28px 16px 48px;
   }
   .display { font-family: 'Cinzel', Georgia, serif; letter-spacing: 0.04em; }
-  .wrap { width: 100%; max-width: 840px; }
+  .wrap { width: 100%; max-width: 680px; }
 
-  header.top { text-align: center; margin-bottom: 20px; }
-  header.top h1 { font-size: clamp(26px, 6vw, 40px); margin: 0 0 6px; font-weight: 600; }
-  header.top .rule { width: 120px; height: 3px; margin: 10px auto 12px; background: linear-gradient(90deg, transparent, var(--bronze), transparent); }
-  header.top p.sub { margin: 0; color: var(--ink-soft); font-size: 16px; font-style: italic; }
+  header.top { text-align: center; margin-bottom: 26px; }
+  header.top h1 { font-size: clamp(26px, 6.5vw, 40px); margin: 0 0 8px; font-weight: 600; }
+  header.top .rule { width: 140px; height: 3px; margin: 12px auto 14px; background: linear-gradient(90deg, transparent, var(--bronze), transparent); }
+  header.top p.sub { margin: 0; color: var(--ink-soft); font-size: 17px; font-style: italic; }
 
-  nav.top-nav {
-    display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 20px;
-  }
-  nav.top-nav button {
-    font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 0.03em;
-    padding: 9px 14px; border-radius: 8px; border: 1px solid var(--line);
-    background: var(--bg-panel); color: var(--ink-soft); cursor: pointer;
-  }
-  nav.top-nav button:hover { border-color: var(--bronze); color: var(--ink); }
-  nav.top-nav button.active { background: var(--red); border-color: var(--red); color: #2A1400; }
-  nav.top-nav button.manage { border-style: dashed; }
-
-  .panel {
+  .unit-list { display: flex; flex-direction: column; gap: 16px; margin-top: 30px; }
+  a.unit-card, div.unit-card.placeholder {
+    display: block; text-align: left; text-decoration: none; color: var(--ink);
     background: var(--bg-panel); border: 1px solid var(--line); border-radius: 14px;
-    padding: 22px; box-shadow: 0 10px 24px -14px var(--shadow); position: relative;
+    padding: 22px 24px; box-shadow: 0 10px 22px -14px var(--shadow); transition: border-color .15s, transform .15s; position: relative;
   }
-  .panel::before, .panel::after { content:''; position:absolute; width:14px; height:14px; border:2px solid var(--line); opacity:.6; }
-  .panel::before { top:8px; left:8px; border-right:none; border-bottom:none; }
-  .panel::after { bottom:8px; right:8px; border-left:none; border-top:none; }
+  .unit-card::before, .unit-card::after { content:''; position:absolute; width:14px; height:14px; border:2px solid var(--line); opacity:.55; }
+  .unit-card::before { top:8px; left:8px; border-right:none; border-bottom:none; }
+  .unit-card::after { bottom:8px; right:8px; border-left:none; border-top:none; }
+  a.unit-card:hover { border-color: var(--bronze); transform: translateY(-2px); }
+  .unit-card .unit-tag { text-transform: uppercase; letter-spacing: 0.08em; font-size: 12px; color: var(--bronze-light); margin: 0 0 6px; }
+  .unit-card h2 { font-family: 'Cinzel', serif; font-weight:600; font-size: 19px; margin: 0 0 8px; color: var(--red); }
+  .unit-card p { margin: 0; color: var(--ink-soft); font-size: 15.5px; }
 
-  h2.section-title { font-family:'Cinzel', serif; font-size:19px; color:var(--red); margin: 0 0 14px; }
-  h3.sub-title { font-family:'Cinzel', serif; font-size:15px; color:var(--ink); margin: 22px 0 8px; }
+  .unit-card.placeholder { opacity: 0.5; }
+  .unit-card.placeholder h2 { color: var(--ink-soft); }
 
-  .topic-card {
-    background: var(--bg-panel-2); border:1px solid var(--line-soft); border-radius: 10px;
-    padding: 16px 18px; margin-bottom: 12px; cursor: pointer; transition: border-color .15s;
-  }
-  .topic-card:hover { border-color: var(--bronze); }
-  .topic-card h3 { font-family:'Cinzel', serif; font-size:16px; margin: 0 0 6px; color: var(--ink); }
-  .topic-card p { margin: 0; color: var(--ink-soft); font-size: 15px; }
-  .topic-card .meta { margin-top: 8px; font-size: 13px; color: var(--bronze); font-family:'Cinzel', serif; letter-spacing: 0.02em; }
-
-  .back-link {
-    display: inline-block; margin-bottom: 14px; font-family:'Cinzel', serif; font-size: 12px;
-    letter-spacing: 0.03em; color: var(--ink-soft); background: none; border: none; cursor: pointer; padding: 0;
-  }
-  .back-link:hover { color: var(--red); }
-
-  .points { padding-left: 20px; color: var(--ink-soft); font-size: 16px; }
-  .points li { margin-bottom: 6px; }
-
-  .game-card {
-    display:flex; justify-content: space-between; align-items: center; gap: 12px;
-    background: var(--bg); border:1px solid var(--line-soft); border-radius: 10px;
-    padding: 14px 16px; margin-bottom: 10px; flex-wrap: wrap;
-  }
-  .game-card .gi h4 { margin: 0 0 4px; font-family:'Cinzel', serif; font-size: 15px; color: var(--ink); }
-  .game-card .gi p { margin:0; color: var(--ink-soft); font-size: 14px; }
-  .game-card a.playbtn {
-    font-family:'Cinzel', serif; font-size: 12px; letter-spacing: 0.03em; text-decoration:none;
-    background: var(--patina); color:#F4EEDF; padding: 9px 16px; border-radius: 8px; white-space: nowrap;
-  }
-  .game-card a.playbtn:hover { filter: brightness(1.08); }
-  .game-card button.del {
-    font-size: 12px; border:1px solid var(--line); background: transparent; color: var(--ink-soft);
-    border-radius: 6px; padding: 4px 8px; cursor: pointer;
-  }
-  .game-card button.del:hover { color: var(--bad); border-color: var(--bad); }
-
-  .empty-note { color: var(--ink-soft); font-style: italic; font-size: 15px; }
-
-  .ref-scroll { overflow-x: auto; }
-  .ref-table { width:100%; border-collapse: collapse; margin: 10px 0 22px; font-size: 16px; }
-  .ref-table caption { font-family:'Cinzel', serif; font-size:14px; text-align:left; color:var(--red); margin-bottom:8px; }
-  .ref-table th, .ref-table td { border:1px solid var(--line-soft); padding:7px 10px; text-align:left; }
-  .ref-table th { background: var(--bg-panel-2); font-weight:600; }
-  .ref-note { color: var(--ink-soft); font-size: 15px; margin: 4px 0 20px; }
-
-  form.manage-form { display:flex; flex-direction: column; gap: 10px; margin: 10px 0 26px; }
-  form.manage-form label { font-size: 14px; color: var(--ink-soft); display:flex; flex-direction: column; gap: 4px; }
-  form.manage-form input[type=text], form.manage-form textarea, form.manage-form select {
-    font-family:'Crimson Pro', serif; font-size: 16px; padding: 9px 11px; border-radius: 7px;
-    border: 1px solid var(--line); background: var(--bg); color: var(--ink);
-  }
-  form.manage-form textarea { resize: vertical; min-height: 64px; }
-  form.manage-form button.submit {
-    align-self: flex-start; font-family:'Cinzel', serif; font-size: 13px; letter-spacing: .03em;
-    background: var(--red); color: #2A1400; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer;
-  }
-  form.manage-form button.submit:hover { background: var(--red-dark); }
-  form.manage-form button.submit:disabled { opacity: .55; cursor: default; }
-
-  .topic-manage-block { border:1px solid var(--line-soft); border-radius: 10px; padding: 14px 16px; margin-bottom: 14px; background: var(--bg-panel-2); }
-  .topic-manage-block .row { display:flex; justify-content: space-between; align-items:center; gap: 10px; flex-wrap: wrap; }
-  .topic-manage-block h4 { margin:0; font-family:'Cinzel', serif; font-size: 15px; }
-  .topic-manage-block button.del-topic { font-size: 12px; border:1px solid var(--line); background: transparent; color: var(--ink-soft); border-radius: 6px; padding: 5px 10px; cursor: pointer; }
-  .topic-manage-block button.del-topic:hover { color: var(--bad); border-color: var(--bad); }
-
-  .save-status { font-size: 13px; color: var(--ink-soft); min-height: 18px; margin-top: 4px; }
-  .save-status.ok { color: var(--ok); }
-  .save-status.bad { color: var(--bad); }
-
-  .loading { text-align:center; color: var(--ink-soft); padding: 30px 10px; font-style: italic; }
-
-  footer.foot { text-align:center; margin-top: 20px; color: var(--ink-soft); font-size: 13px; font-style: italic; }
-
+  footer.foot { text-align:center; margin-top: 32px; color: var(--ink-soft); font-size: 13px; font-style: italic; }
   @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
 </head>
@@ -175,328 +97,19 @@
   <header class="top">
     <h1 class="display">VIA LATINA</h1>
     <div class="rule"></div>
-    <p class="sub">portal de llatí — temes, referència i jocs de practica</p>
+    <p class="sub">4t d'ESO — jocs i activitats per temes</p>
+    <p class="sub" style="margin-top:4px;">Institut La Mitjana · Curs 2026–2027</p>
   </header>
 
-  <nav class="top-nav" id="topNav">
-    <button data-view="home">Inici</button>
-    <button data-view="reference">Referència</button>
-  </nav>
+  <div class="unit-list">
+    <a class="unit-card" href="unitat1/index.html">
+      <p class="unit-tag">Tema 1</p>
+      <h2>Primera declinació i present d'indicatiu</h2>
+      <p>Declinació dels noms en -a, present d'indicatiu de les quatre conjugacions, vocabulari, sintaxi (cas i funció) i l'origen dels mots del català.</p>
+    </a>
+  </div>
 
-  <section class="panel" id="panel">
-    <div class="loading">Carregant el portal…</div>
-  </section>
-
-  <footer class="foot">Salve, discipule — que la fortuna t'acompanyi en el teu llatí.</footer>
+  <footer class="foot">Salve, discipule — que la fortuna t'acompanyi en el teu llatí.<br>Gerard Méndez</footer>
 </div>
-
-<script>
-(function(){
-  "use strict";
-
-  var DEFAULT_DATA = {
-    topics: [
-      {
-        id: "decl1-pres-ind",
-        title: "Primera declinació i present d'indicatiu",
-        intro: "El primer bloc del curs: declinar els noms en -a (rosa, puella, terra…) i conjugar verbs en present d'indicatiu actiu a les quatre conjugacions.",
-        points: [
-          "Els noms de la primera declinació acaben en -a i solen ser femenins (rosa, puella, terra); alguns designen oficis masculins (agricola, nauta, poeta).",
-          "El present d'indicatiu actiu es forma amb l'arrel + vocal temàtica + desinència personal (-o/-s/-t/-mus/-tis/-nt).",
-          "Hi ha quatre conjugacions (amare, habere, mittere, audire) i un grup mixt (capere) amb trets de la 3a i la 4a."
-        ],
-        games: [
-          { id: "via-latina", title: "Via Latina", description: "Practica la declinació, la conjugació i el vocabulari amb punts, ratxa i vides.", url: "unitat1/via-latina.html" },
-          { id: "memoria-latina", title: "Memoria Latina", description: "Joc de parelles: relaciona cada mot llatí amb el seu significat en català.", url: "unitat1/memoria-latina.html" },
-          { id: "tabula-completa", title: "Tabula Completa", description: "Omple d'un cop tot el paradigma d'un nom (6 casos x 2 nombres) o d'un verb (present d'indicatiu).", url: "unitat1/tabula-completa.html" },
-          { id: "origo-verborum", title: "Origo Verborum", description: "Substrat, superstrat, adstrat, mots patrimonials i cultismes — d'on venen els mots del català.", url: "unitat1/origo-verborum.html" },
-          { id: "syntaxis-latina", title: "Syntaxis Latina", description: "Identifica el cas i la funció sintàctica de cada paraula (inclosos els verbs) i tradueix oracions senceres, amb un vocabulari complet per fer-ho sense diccionari.", url: "unitat1/syntaxis-latina.html" }
-        ]
-      }
-    ]
-  };
-
-  var DATA = null;
-  var view = "home";
-  var currentTopicId = null;
-  var canEdit = false;
-  var artifactCap = null;
-
-  var panel = document.getElementById("panel");
-  var topNav = document.getElementById("topNav");
-
-  function escapeHtml(s){
-    return String(s).replace(/[&<>"']/g, function(c){
-      return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
-    });
-  }
-  function uid(prefix){ return prefix + "-" + Math.random().toString(36).slice(2,9); }
-
-  // ---------- BOOT ----------
-
-  function boot(){
-    Promise.all([loadData(), loadUser()]).then(function(){
-      buildNav();
-      render();
-    });
-  }
-
-  function loadData(){
-    return fetch("data.json").then(function(r){
-      if (!r.ok) throw new Error("no data.json yet");
-      return r.json();
-    }).then(function(json){
-      DATA = json && json.topics ? json : DEFAULT_DATA;
-    }).catch(function(){
-      DATA = JSON.parse(JSON.stringify(DEFAULT_DATA));
-    });
-  }
-
-  function loadUser(){
-    if (!window.claude || !window.claude.use) { canEdit = false; return Promise.resolve(); }
-    return window.claude.use("user").then(function(user){
-      if (!user) { canEdit = false; return; }
-      return user.canEdit().then(function(v){ canEdit = !!v; });
-    }).catch(function(){ canEdit = false; });
-  }
-
-  function ensureArtifactCap(){
-    if (artifactCap) return Promise.resolve(artifactCap);
-    if (!window.claude || !window.claude.use) return Promise.resolve(null);
-    return window.claude.use("artifact").then(function(cap){ artifactCap = cap; return cap; }).catch(function(){ return null; });
-  }
-
-  // ---------- PERSIST ----------
-
-  function saveData(statusEl){
-    if (statusEl){ statusEl.textContent = "Desant…"; statusEl.className = "save-status"; }
-    return ensureArtifactCap().then(function(cap){
-      if (!cap) throw { code: "not_granted" };
-      return cap.publish({ "data.json": JSON.stringify(DATA) });
-    }).then(function(){
-      if (statusEl){ statusEl.textContent = "Desat."; statusEl.className = "save-status ok"; }
-      return true;
-    }).catch(function(err){
-      var code = err && err.code ? err.code : "error";
-      var msg = "No s'ha pogut desar (" + code + "). Torna-ho a provar.";
-      if (code === "not_writer" || code === "not_granted") msg = "Aquesta vista és de només lectura.";
-      if (statusEl){ statusEl.textContent = msg; statusEl.className = "save-status bad"; }
-      return false;
-    });
-  }
-
-  // ---------- NAV ----------
-
-  function buildNav(){
-    // remove any previously added dynamic topic buttons / manage button
-    Array.prototype.slice.call(topNav.querySelectorAll("[data-dynamic]")).forEach(function(b){ b.remove(); });
-    DATA.topics.forEach(function(t){
-      var b = document.createElement("button");
-      b.dataset.dynamic = "1";
-      b.dataset.view = "topic";
-      b.dataset.topicId = t.id;
-      b.textContent = t.title.length > 26 ? t.title.slice(0,24) + "…" : t.title;
-      topNav.appendChild(b);
-    });
-    if (canEdit){
-      var m = document.createElement("button");
-      m.dataset.dynamic = "1";
-      m.dataset.view = "manage";
-      m.className = "manage";
-      m.textContent = "Gestiona";
-      topNav.appendChild(m);
-    }
-  }
-
-  topNav.addEventListener("click", function(e){
-    var btn = e.target.closest("button[data-view]");
-    if (!btn) return;
-    view = btn.dataset.view;
-    currentTopicId = btn.dataset.topicId || null;
-    render();
-  });
-
-  function setActiveNav(){
-    Array.prototype.forEach.call(topNav.querySelectorAll("button"), function(b){
-      var active = b.dataset.view === view && (view !== "topic" || b.dataset.topicId === currentTopicId);
-      b.classList.toggle("active", active);
-    });
-  }
-
-  // ---------- RENDER ----------
-
-  function render(){
-    setActiveNav();
-    if (view === "home") renderHome();
-    else if (view === "reference") renderReference();
-    else if (view === "topic") renderTopic(currentTopicId);
-    else if (view === "manage") renderManage();
-    else renderHome();
-  }
-
-  function renderHome(){
-    var html = '<h2 class="section-title">Temes del curs</h2>';
-    if (DATA.topics.length === 0){
-      html += '<p class="empty-note">Encara no hi ha cap tema afegit.</p>';
-    }
-    DATA.topics.forEach(function(t){
-      html += '<div class="topic-card" data-topic-id="' + escapeHtml(t.id) + '">';
-      html += '<h3>' + escapeHtml(t.title) + '</h3>';
-      html += '<p>' + escapeHtml(t.intro || "") + '</p>';
-      html += '<div class="meta">' + t.games.length + (t.games.length === 1 ? ' joc' : ' jocs') + '</div>';
-      html += '</div>';
-    });
-    panel.innerHTML = html;
-    Array.prototype.forEach.call(panel.querySelectorAll(".topic-card"), function(card){
-      card.addEventListener("click", function(){
-        view = "topic"; currentTopicId = card.dataset.topicId; render();
-      });
-    });
-  }
-
-  function renderTopic(topicId){
-    var t = DATA.topics.find(function(x){ return x.id === topicId; });
-    if (!t){ view = "home"; return renderHome(); }
-    var html = '<button class="back-link" id="backBtn">← Tots els temes</button>';
-    html += '<h2 class="section-title">' + escapeHtml(t.title) + '</h2>';
-    html += '<p>' + escapeHtml(t.intro || "") + '</p>';
-    if (t.points && t.points.length){
-      html += '<h3 class="sub-title">Punts clau</h3><ul class="points">';
-      t.points.forEach(function(p){ html += '<li>' + escapeHtml(p) + '</li>'; });
-      html += '</ul>';
-    }
-    html += '<h3 class="sub-title">Jocs de pràctica</h3>';
-    if (!t.games || t.games.length === 0){
-      html += '<p class="empty-note">Encara no hi ha jocs per a aquest tema.</p>';
-    } else {
-      t.games.forEach(function(g){
-        html += '<div class="game-card">';
-        html += '<div class="gi"><h4>' + escapeHtml(g.title) + '</h4><p>' + escapeHtml(g.description || "") + '</p></div>';
-        html += '<a class="playbtn" href="' + escapeHtml(g.url) + '" target="_blank" rel="noopener">Obre el joc</a>';
-        html += '</div>';
-      });
-    }
-    panel.innerHTML = html;
-    document.getElementById("backBtn").addEventListener("click", function(){ view = "home"; render(); });
-  }
-
-  function renderReference(){
-    var html = '<h2 class="section-title">Taules de referència</h2>';
-    html += '<div class="ref-scroll">';
-    html += '<table class="ref-table"><caption>Primera declinació — rosa, rosae (f.)</caption>' +
-      '<tr><th></th><th>Singular</th><th>Plural</th></tr>' +
-      '<tr><td>Nominatiu</td><td>rosa</td><td>rosae</td></tr>' +
-      '<tr><td>Vocatiu</td><td>rosa</td><td>rosae</td></tr>' +
-      '<tr><td>Acusatiu</td><td>rosam</td><td>rosas</td></tr>' +
-      '<tr><td>Genitiu</td><td>rosae</td><td>rosarum</td></tr>' +
-      '<tr><td>Datiu</td><td>rosae</td><td>rosis</td></tr>' +
-      '<tr><td>Ablatiu</td><td>rosa</td><td>rosis</td></tr>' +
-      '</table>';
-    html += '<p class="ref-note">Gairebé tots els noms en -a de la primera declinació són femenins, excepte alguns que designen ofici o persona masculina: <em>agricola</em> (pagès), <em>nauta</em> (mariner), <em>poeta</em> (poeta) — es declinen igual, però concorden en masculí.</p>';
-    html += '<p class="ref-note">El vocatiu coincideix sempre amb el nominatiu en la primera declinació, tant en singular com en plural.</p>';
-
-    html += '<table class="ref-table"><caption>Present d\'indicatiu actiu — desinències personals</caption>' +
-      '<tr><th>Persona</th><th>1a conj. (amare)</th><th>2a conj. (habere)</th><th>3a conj. (mittere)</th><th>3a mixta (capere)</th><th>4a conj. (audire)</th></tr>' +
-      '<tr><td>jo</td><td>am‑o</td><td>habe‑o</td><td>mitt‑o</td><td>capi‑o</td><td>audi‑o</td></tr>' +
-      '<tr><td>tu</td><td>ama‑s</td><td>habe‑s</td><td>mitti‑s</td><td>capi‑s</td><td>audi‑s</td></tr>' +
-      '<tr><td>ell/ella</td><td>ama‑t</td><td>habe‑t</td><td>mitti‑t</td><td>capi‑t</td><td>audi‑t</td></tr>' +
-      '<tr><td>nosaltres</td><td>ama‑mus</td><td>habe‑mus</td><td>mitti‑mus</td><td>capi‑mus</td><td>audi‑mus</td></tr>' +
-      '<tr><td>vosaltres</td><td>ama‑tis</td><td>habe‑tis</td><td>mitti‑tis</td><td>capi‑tis</td><td>audi‑tis</td></tr>' +
-      '<tr><td>ells/elles</td><td>ama‑nt</td><td>habe‑nt</td><td>mitt‑unt</td><td>capi‑unt</td><td>audi‑unt</td></tr>' +
-      '</table>';
-    html += '<p class="ref-note">La vocal temàtica (a / e / — / i / i) i la desinència personal es repeteixen a totes les conjugacions — és el que fa reconeixible cada forma.</p>';
-    html += '</div>';
-    panel.innerHTML = html;
-  }
-
-  function renderManage(){
-    if (!canEdit){ view = "home"; return renderHome(); }
-    var html = '<h2 class="section-title">Gestiona continguts</h2>';
-    html += '<p class="empty-note">Aquesta secció només la veus tu (com a propietari o editor del portal). Els canvis es desen per a tots els alumnes.</p>';
-
-    html += '<h3 class="sub-title">Afegeix un tema nou</h3>';
-    html += '<form class="manage-form" id="topicForm">';
-    html += '<label>Títol del tema<input type="text" id="ntTitle" required placeholder="p. ex. Segona declinació"></label>';
-    html += '<label>Introducció<textarea id="ntIntro" placeholder="Breu resum del que es treballa en aquest tema"></textarea></label>';
-    html += '<label>Punts clau (un per línia)<textarea id="ntPoints" placeholder="Un punt per línia"></textarea></label>';
-    html += '<button type="submit" class="submit">Afegeix tema</button>';
-    html += '<div class="save-status" id="topicStatus"></div>';
-    html += '</form>';
-
-    html += '<h3 class="sub-title">Temes existents</h3>';
-    DATA.topics.forEach(function(t){
-      html += '<div class="topic-manage-block" data-topic-id="' + escapeHtml(t.id) + '">';
-      html += '<div class="row"><h4>' + escapeHtml(t.title) + '</h4><button class="del-topic">Elimina el tema</button></div>';
-      html += '<h3 class="sub-title" style="margin-top:14px;">Afegeix un joc a aquest tema</h3>';
-      html += '<form class="manage-form gameForm" data-topic-id="' + escapeHtml(t.id) + '">';
-      html += '<label>Títol del joc<input type="text" class="gTitle" required placeholder="p. ex. Via Latina"></label>';
-      html += '<label>Descripció breu<input type="text" class="gDesc" placeholder="Què practica aquest joc"></label>';
-      html += '<label>Enllaç al joc (URL)<input type="text" class="gUrl" required placeholder="https://claude.ai/artifact/..."></label>';
-      html += '<button type="submit" class="submit">Afegeix joc</button>';
-      html += '<div class="save-status gStatus"></div>';
-      html += '</form>';
-      if (t.games && t.games.length){
-        t.games.forEach(function(g){
-          html += '<div class="game-card"><div class="gi"><h4>' + escapeHtml(g.title) + '</h4><p>' + escapeHtml(g.description||"") + '</p></div>';
-          html += '<button class="del" data-topic-id="' + escapeHtml(t.id) + '" data-game-id="' + escapeHtml(g.id) + '">Elimina</button></div>';
-        });
-      }
-      html += '</div>';
-    });
-
-    panel.innerHTML = html;
-
-    document.getElementById("topicForm").addEventListener("submit", function(e){
-      e.preventDefault();
-      var title = document.getElementById("ntTitle").value.trim();
-      if (!title) return;
-      var intro = document.getElementById("ntIntro").value.trim();
-      var pointsRaw = document.getElementById("ntPoints").value.trim();
-      var points = pointsRaw ? pointsRaw.split("\n").map(function(s){return s.trim();}).filter(Boolean) : [];
-      DATA.topics.push({ id: uid("topic"), title: title, intro: intro, points: points, games: [] });
-      var statusEl = document.getElementById("topicStatus");
-      saveData(statusEl).then(function(ok){ if (ok){ buildNav(); renderManage(); } });
-    });
-
-    Array.prototype.forEach.call(panel.querySelectorAll(".gameForm"), function(form){
-      form.addEventListener("submit", function(e){
-        e.preventDefault();
-        var tId = form.dataset.topicId;
-        var t = DATA.topics.find(function(x){ return x.id === tId; });
-        if (!t) return;
-        var title = form.querySelector(".gTitle").value.trim();
-        var url = form.querySelector(".gUrl").value.trim();
-        if (!title || !url) return;
-        var desc = form.querySelector(".gDesc").value.trim();
-        t.games.push({ id: uid("game"), title: title, description: desc, url: url });
-        var statusEl = form.querySelector(".gStatus");
-        saveData(statusEl).then(function(ok){ if (ok) renderManage(); });
-      });
-    });
-
-    Array.prototype.forEach.call(panel.querySelectorAll("button.del-topic"), function(btn){
-      btn.addEventListener("click", function(){
-        var block = btn.closest(".topic-manage-block");
-        var tId = block.dataset.topicId;
-        if (!window.confirm("Segur que vols eliminar aquest tema i tots els seus jocs?")) return;
-        DATA.topics = DATA.topics.filter(function(x){ return x.id !== tId; });
-        saveData(null).then(function(ok){ if (ok){ buildNav(); renderManage(); } });
-      });
-    });
-
-    Array.prototype.forEach.call(panel.querySelectorAll("button.del"), function(btn){
-      btn.addEventListener("click", function(){
-        var tId = btn.dataset.topicId, gId = btn.dataset.gameId;
-        var t = DATA.topics.find(function(x){ return x.id === tId; });
-        if (!t) return;
-        t.games = t.games.filter(function(g){ return g.id !== gId; });
-        saveData(null).then(function(ok){ if (ok) renderManage(); });
-      });
-    });
-  }
-
-  boot();
-})();
-</script>
 </body>
 </html>
