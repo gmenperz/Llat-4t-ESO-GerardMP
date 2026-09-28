@@ -237,7 +237,7 @@
       optKeys: opts,
       optLabels: opts.map(function(k){ return STRATA_INFO[k].label; }),
       answerKey: w.s,
-      explain: "\u00ab" + w.word + "\u00bb " + STRATA_INFO[w.s].note
+      explain: "«" + w.word + "» " + STRATA_INFO[w.s].note
     };
   }
 
@@ -248,8 +248,8 @@
     var answerKey = showPat ? "pat" : "cult";
     var opts = shuffle(["pat","cult"]);
     var explain = showPat
-      ? "\u00ab" + d.pat + "\u00bb és el mot patrimonial de " + d.etymon + ": ha evolucionat fonèticament de manera continuada des del llatí parlat. El seu doblet cultisme és \u00ab" + d.cult + "\u00bb, manllevat més tard directament del llatí escrit."
-      : "\u00ab" + d.cult + "\u00bb és el cultisme de " + d.etymon + ": es va incorporar directament del llatí per via culta, per això manté una forma molt pròxima a l'ètim. El seu doblet patrimonial és \u00ab" + d.pat + "\u00bb.";
+      ? "«" + d.pat + "» és el mot patrimonial de " + d.etymon + ": ha evolucionat fonèticament de manera continuada des del llatí parlat. El seu doblet cultisme és «" + d.cult + "», manllevat més tard directament del llatí escrit."
+      : "«" + d.cult + "» és el cultisme de " + d.etymon + ": es va incorporar directament del llatí per via culta, per això manté una forma molt pròxima a l'ètim. El seu doblet patrimonial és «" + d.pat + "».";
     return {
       family:"doublets",
       word: shown,
